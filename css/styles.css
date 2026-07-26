@@ -445,6 +445,15 @@ textarea:focus-visible {
   text-align: center;
 }
 
+/* The button lives inside .primary-nav, so it needs to beat .primary-nav a's
+   text colour (higher specificity) to stay white instead of going dark-on-dark. */
+.primary-nav a.nav-cta,
+.primary-nav a.nav-cta:hover,
+.primary-nav a.nav-cta:focus-visible {
+  color: #ffffff;
+  border-bottom: none;
+}
+
 @media (min-width: 900px) {
   .nav-toggle {
     display: none;
@@ -478,7 +487,7 @@ textarea:focus-visible {
     position: relative;
   }
 
-  .primary-nav a::after {
+  .primary-nav a:not(.nav-cta)::after {
     content: "";
     position: absolute;
     left: 0;
@@ -489,8 +498,8 @@ textarea:focus-visible {
     transition: right var(--transition-medium);
   }
 
-  .primary-nav a:hover::after,
-  .primary-nav a:focus-visible::after {
+  .primary-nav a:not(.nav-cta):hover::after,
+  .primary-nav a:not(.nav-cta):focus-visible::after {
     right: 0;
   }
 
