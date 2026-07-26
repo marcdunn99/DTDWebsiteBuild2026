@@ -5,6 +5,18 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   /* -------------------------------------------------------
+     Header shadow once the page has scrolled past the top
+     ------------------------------------------------------- */
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var updateHeaderShadow = function () {
+      header.classList.toggle('is-scrolled', window.scrollY > 4);
+    };
+    updateHeaderShadow();
+    window.addEventListener('scroll', updateHeaderShadow, { passive: true });
+  }
+
+  /* -------------------------------------------------------
      Mobile navigation
      ------------------------------------------------------- */
   var navToggle = document.querySelector('.nav-toggle');

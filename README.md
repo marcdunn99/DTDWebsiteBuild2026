@@ -11,9 +11,16 @@ css/styles.css         All styles (CSS custom properties for colour/type/spacing
 js/main.js             Mobile nav, enquiry-type pre-selection, form validation, footer year
 images/                 Photography used on the site, plus placeholder assets (see below)
 images/originals/       Full-resolution source photos as supplied, kept for future use
+fonts/                  Self-hosted webfonts (see below)
 ```
 
 Open `index.html` directly in a browser, or serve the folder with any static file server.
+
+## Typography
+
+Headings use Fraunces and body text uses Source Sans 3, both self-hosted as variable-font
+`.woff2` files in `fonts/` (no external font requests at runtime). Both are open-source,
+licensed under the SIL Open Font License, originally sourced from Google Fonts.
 
 ## Photography
 
