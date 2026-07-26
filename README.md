@@ -9,18 +9,26 @@ index.html            Homepage (single-scroll, anchored sections)
 privacy-policy.html   Privacy Policy page
 css/styles.css         All styles (CSS custom properties for colour/type/spacing)
 js/main.js             Mobile nav, enquiry-type pre-selection, form validation, footer year
-images/                 Placeholder image assets (see below)
+images/                 Photography used on the site, plus placeholder assets (see below)
+images/originals/       Full-resolution source photos as supplied, kept for future use
 ```
 
 Open `index.html` directly in a browser, or serve the folder with any static file server.
 
+## Photography
+
+- `images/hero-denise.jpg` and `images/about-denise.jpg` are the real photographs now used
+  in the Hero and About sections (optimised JPEGs, compressed from the originals supplied).
+  The Open Graph share image also currently points at `hero-denise.jpg`; for the best social
+  share preview, consider swapping in a dedicated landscape (1200x630) crop before publication.
+- Two additional supplied photographs are not currently used anywhere on the site. Full-resolution
+  originals of all four supplied photos are kept in `images/originals/` in case any are wanted
+  for a future section or an alternate crop.
+- `images/hero-placeholder.svg`, `images/about-placeholder.svg`, and `images/og-image-placeholder.svg`
+  are no longer referenced by the page but are left in place in case they're useful as a fallback.
+
 ## Placeholders that must be resolved before publishing
 
-- **Photography** — `images/hero-placeholder.svg`, `images/about-placeholder.svg`, and
-  `images/og-image-placeholder.svg` are clearly labelled placeholders. Replace them with
-  real, optimised photographs of Denise (recommended: WebP/JPEG, appropriately compressed)
-  and update the `<img>` `src`/`width`/`height` attributes and `alt` text in `index.html`
-  and the `og:image` tag in `index.html`'s `<head>`.
 - **Favicon** — `images/favicon-placeholder.svg` is a neutral placeholder square, referenced
   from both HTML pages. Replace with a final favicon (SVG and/or ICO/PNG fallbacks).
 - **Contact form backend** — the enquiry form in `index.html` (`#enquiry-form`) has no
