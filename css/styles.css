@@ -765,6 +765,12 @@ section {
   max-width: 74ch;
 }
 
+.events-list-heading {
+  color: #ffffff;
+  font-weight: 600;
+  max-width: 74ch;
+}
+
 .events-list {
   list-style: none;
   display: flex;
