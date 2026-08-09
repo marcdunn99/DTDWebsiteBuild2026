@@ -943,6 +943,10 @@ section {
   color: var(--color-text-soft);
 }
 
+.enquiry-form button[type="submit"] {
+  align-self: flex-start;
+}
+
 .form-status {
   font-weight: 600;
   min-height: 1.2em;
