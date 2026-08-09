@@ -821,6 +821,7 @@ section {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: var(--shadow-md);
+  width: 100%;
   max-width: 340px;
   margin-inline: auto;
 }
