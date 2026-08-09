@@ -701,6 +701,10 @@ section {
   background-color: var(--color-secondary);
 }
 
+.reading-card:nth-of-type(3)::before {
+  background-color: var(--color-accent);
+}
+
 .reading-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-3px);
@@ -717,6 +721,10 @@ section {
   color: var(--color-secondary-text);
 }
 
+.reading-card:nth-of-type(3) .card-intro {
+  color: var(--color-accent-dark);
+}
+
 .card-body p {
   color: var(--color-text-soft);
 }
@@ -725,9 +733,9 @@ section {
   margin-top: var(--space-2);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .readings-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     align-items: start;
   }
 }
