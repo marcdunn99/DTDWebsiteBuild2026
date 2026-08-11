@@ -754,6 +754,7 @@ section {
   font-size: 0.85rem;
   color: var(--color-accent-on-dark);
   font-weight: 600;
+  max-width: none;
 }
 
 .events h2 {
