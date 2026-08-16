@@ -74,16 +74,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* -------------------------------------------------------
-     Enquiry form: client-side validation and status messaging.
-
-     NOTE: This form does not yet submit to a backend or email
-     service. Before publishing, connect the form to a processor
-     (for example, a server-side endpoint or a third-party form
-     service) and replace this handler's placeholder success
-     behaviour with a real submission.
+     Enquiry form: client-side validation, then submission to
+     FormSubmit (https://formsubmit.co), which emails entries to
+     hello@denisetaylordunn.com. No backend of our own is needed
+     since this site is static.
      ------------------------------------------------------- */
   var form = document.getElementById('enquiry-form');
   var formStatus = document.getElementById('form-status');
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/hello@denisetaylordunn.com';
 
   if (form && formStatus) {
     form.addEventListener('submit', function (event) {
@@ -119,10 +117,48 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // Placeholder confirmation until the form is connected to a backend.
-      formStatus.textContent = 'Thank you. Your enquiry has been prepared for sending — form submission handling still needs to be connected before this website goes live.';
-      formStatus.setAttribute('data-state', 'success');
-      form.reset();
+      var submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+      formStatus.removeAttribute('data-state');
+      formStatus.textContent = 'Sending your enquiry…';
+
+      var formData = new FormData(form);
+      var payload = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        'Enquiry type': formData.get('enquiry-type'),
+        message: formData.get('message'),
+        _subject: 'New website enquiry: ' + formData.get('enquiry-type'),
+        _template: 'table'
+      };
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Submission failed');
+          }
+          formStatus.textContent = "Thank you. Your enquiry has been sent — I'll be in touch soon.";
+          formStatus.setAttribute('data-state', 'success');
+          form.reset();
+        })
+        .catch(function () {
+          formStatus.textContent = 'Sorry, something went wrong sending your enquiry. Please try again, or email hello@denisetaylordunn.com directly.';
+          formStatus.setAttribute('data-state', 'error');
+        })
+        .finally(function () {
+          if (submitButton) {
+            submitButton.disabled = false;
+          }
+        });
     });
   }
 
