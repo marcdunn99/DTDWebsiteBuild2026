@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         email: formData.get('email'),
         'Enquiry type': formData.get('enquiry-type'),
         message: formData.get('message'),
-        _subject: 'New website enquiry from ' + formData.get('name') + ': ' + formData.get('enquiry-type'),
+        _subject: 'New website enquiry: ' + formData.get('enquiry-type') + ' - ' + formData.get('name'),
         _template: 'table'
       };
 
